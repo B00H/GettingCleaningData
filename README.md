@@ -195,4 +195,4 @@ Save dsfinal as a text file into the current working directory.
 
 Print the following messages on-screen: 
 (1) A tidy data set called tidyds.txt was saved into your current working directory. Please see README.md for specifics on the code used. Please see CodeBook.md for details on the variables in this data set. 
-(2) The data for this analysis was downloaded on <datedownloaded>. The analysis was conducted on <dateanalyzed>.
+(2) The data for this analysis was downloaded on (datedownloaded). The analysis was conducted on (dataanalyzed).
