@@ -126,8 +126,8 @@ Adapt column names for better readability, that is, all lower case letters, remo
 | fBodyGyro-meanFreq()-X               | fbodygyroscopemeanfreqx                        |
 | fBodyGyro-meanFreq()-Y               | fbodygyroscopemeanfreqy                        |
 | fBodyGyro-meanFreq()-Z               | fbodygyroscopemeanfreqz                        |
-| fBodyAccMag-mean()                   | fbodyaccelerationmagmean                  |
-| fBodyAccMag-meanFreq()               | fbodyaccelerationmagmeanfreq              |
+| fBodyAccMag-mean()                   | fbodyaccelerationmagnitudemean                  |
+| fBodyAccMag-meanFreq()               | fbodyaccelerationmagnitudemeanfreq              |
 | fBodyBodyAccJerkMag-mean()           | fbodyaccelerationjerkmagnitudemean        |
 | fBodyBodyAccJerkMag-meanFreq()       | fbodyaccelerationjerkmagnitudemeanfreq    |
 | fBodyBodyGyroMag-mean()              | fbodygyroscopemagnitudemean                    |
@@ -183,7 +183,7 @@ The script loads the reshape2 package.
 
 Calculate mean per subject (i.e., 1 thorugh 30), per activity (i.e., walking, walking upstairs, walking downstairs, sitting, standing, laying) for each variable and save into a data frame called dsfinal. Assign column names to dsfinal.
 
-This is done in three steps. First, using melt from the reshape2 package, the dsall dataset is converted into a long dta frame called  dsallmelt with only 4 columns (i.e., sub, activity, variable and value). The data frame dsallmet will have 885714 rows and 4 columns. This can be checked using dim(dsallmelt`. Then, mean are calculated and saved into the final data frame called dsfinal. The data frame dsfinal will have 15480 rows and 4 columns. This can be checked using `dim(dsfinal)`. Lastly, column names are assigned to dsfinal. 
+This is done in three steps. First, using melt from the reshape2 package, the dsall dataset is converted into a long data frame called dsallmelt with only 4 columns (i.e., sub, activity, variable and value). The data frame dsallmet will have 885714 rows and 4 columns. This can be checked using `dim(dsallmelt)`. Then, means are calculated and saved into the final data frame called dsfinal. The data frame dsfinal will have 15480 rows and 4 columns. This can be checked using `dim(dsfinal)`. Lastly, column names are assigned to dsfinal. 
 
 This step also assigns current date to a new character vector called dataanalyzed. 
   
