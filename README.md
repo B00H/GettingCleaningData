@@ -21,19 +21,19 @@ Read a total of 7 files from the UCI HAR Dataset folder into your workspace:
 
 From the train folder within the UCI HAR Dataset folder, it reads:
 
- | File to be read   | File description | R variable | R class   |
- |-------------------|------------------|------------|-----------|
- | X_train.txt       | raw train data   | trainraw   | numeric   |
- | y_train.txt       | train activities | trainact   | character |
- | subject_train.txt | train subjects   | trainsub   | numeric   |
+| Original file     | File description | R variable | R class   |
+|-------------------|------------------|------------|-----------|
+| X_train.txt       | raw train data   | trainraw   | numeric   |
+| y_train.txt       | train activities | trainact   | character |
+| subject_train.txt | train subjects   | trainsub   | numeric   |
+
+From the test folder with the UCI HAR Dataset folder, it reads:
  
- From the test folder with the UCI HAR Dataset folder, it reads:
- 
- | File to be read  | File description | R variable | R class   |
- |------------------|------------------|------------|-----------|
- | X_test.txt       | raw test data    | testraw    | numeric   |
- | y_test.txt       | test activities  | testact    | character |
- | subject_test.txt | test subjects    | testsub    | numeric   |
+| File to be read  | File description | R variable | R class   |
+|------------------|------------------|------------|-----------|
+| X_test.txt       | raw test data    | testraw    | numeric   |
+| y_test.txt       | test activities  | testact    | character |
+| subject_test.txt | test subjects    | testsub    | numeric   |
  
  From the UCI HAR Dataset folder, it reads:
 
