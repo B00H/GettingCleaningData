@@ -1,8 +1,10 @@
+## Analysis steps
+
 * STEP 1
 
 Check whether the file to be processed (i.e., getdata-projectfiles-UCI HAR Dataset.zip) exists in your current working directory.  If it does not exist, the script will download the data set from the [web](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) to your current working directory. It will also  save the download date as a new character vector called downloaddate.
 
-Check whether unzipped folder called UCI HAR Dataset exists. If it does not exist, scrit will unzip the getdata-projectfiles-UCI HAR Dataset.zip file into your current working directory.
+Check whether unzipped folder called UCI HAR Dataset exists. If it does not exist, script will unzip the getdata-projectfiles-UCI HAR Dataset.zip file into your current working directory.
 
 * STEP 2
 
@@ -158,9 +160,9 @@ Adapt column names for better readability, that is, all lower case letterm remov
 | fBodyBodyGyroMag-std()               | fbodygyromagnitudestd                     |
 | fBodyBodyGyroJerkMag-std()           | fbodygyrojerkmagnitudestd                 |
 
-## STEP 8
+* STEP 8
 
-As the reshape2 package is required for the final step, the scripts checks first whether reshape 2 is installed. If it is not installed, it will install the reshape2 package. The script will load the reshape2 package. 
+As the reshape2 package is required for this step, the scripts checks first whether reshape 2 is installed. If it is not installed, it will install the reshape2 package. The script will load the reshape2 package. 
 
 Calculate mean per subject (i.e., 1 thorugh 30), per activity (i.e., walking, walking upstairs, walking downstairs, sitting, standing, laying) for each variable and save into a data frame called dsfinal. Assign column names to dsfinal.
 
@@ -170,7 +172,7 @@ This step also assigns current date to a new character vector called dataanalyze
   
 (Note: Prior to the melting and mean calcucations steps, the data frame are attached and detached for easier calling of variables.)
 
-## Step 9
+* Step 9
 
 Save dsfinal as a text file into the current working directory.
 Print the following messages on-screen: (1) A tidy data set called tidyds.txt was saved into your current working directory. Please see README.md for specifics on the code used and CodeBook.md for details on the variables in this data set. (2) The data for this analysis was downloaded on <datedownloaded>. The analysis was conducteded on <dateanalyzed>.
