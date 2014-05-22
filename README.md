@@ -1,9 +1,11 @@
 * STEP 1
+
 Check whether the file to be processed (i.e., getdata-projectfiles-UCI HAR Dataset.zip) exists in your current working directory.  If it does not exist, the script will download the data set from the [web](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) to your current working directory. It will also  save the download date as a new character vector called downloaddate.
 
 Check whether unzipped folder called UCI HAR Dataset exists. If it does not exist, scrit will unzip the getdata-projectfiles-UCI HAR Dataset.zip file into your current working directory.
 
 * STEP 2
+
 Read a total of 7 files from the UCI HAR Dataset folder into your workspace:
 
 From the train folder within the UCI HAR Dataset folder:
@@ -29,14 +31,17 @@ From the UCI HAR Dataset folder:
 | features.txt  | variable names   | var        | character |
 
 * STEP 3
+
 Merge the train and test raw data sets (i.e., trainraw, testraw) into one data frame (i.e., dsraw). This data frame  will have 10299 rows and 561 columns. This can be checked using: `dim(dsraw)`.
 
 Assign the merged data set dsraw column names that were previously stored as var. (Note: Specifically, the script calls the second column of var; the first column signifies the number of rows.)
  
 * STEP 4
+
 Subset the data in such that all columns that have mean, Mean or std in the name get copied to a new dataset called dsreduced. This is done in three steps. First, it will subset the data by mean or Mean, saving it as dsmean. Then, it will subset by std, saving it as dsstd. Finally, it will combine dsmean and dsstad into dsreduced. The data frame dsreduced will have 10299 rows and 86 columns. This can be checked using: `dim(dsreduced)`.
 
 * STEP 5
+
 Merge train and test activity labels (i.e., trainact, testact) into one data frame called allact. Assign 'activity' as column name of allact.
 
 For easier reading, the data frame allact will then be recoded by adding a new character variable called ractitvity to allact. The recoding scheme is as follows:
@@ -53,11 +58,13 @@ For easier reading, the data frame allact will then be recoded by adding a new c
 The numeric activity column is deleted. (Note: For easier calling of variables, allact was attached prior to recoding and detached after it.)
 
 * STEP 6
+
 Merge subject data frames (i.e., trainsub, testsub) into new data frame called allsub. Assign column name sub to allsub.
 
 Merge subject, activity and reduced data set data frames (i.e., allsub, allact, dsreduced) into new data frame called dsall. The data frame dsall will have 10299 rows and 88 columns. This can be checked using: `dim(dsall)`. 
 
 * STEP 7
+
 Adapt column names for better readability, that is, all lower case letterm remove dashes, round brackets, duplicates (e.g., bodybody becomes body), and commas. Also, expand names (e.g., mag becomes magnitude, acc becomes acceleration). Please see table below for original and adapted column names. 
 
 (Note: Naming conventions followed Coursera Getting and Cleaning data guidelines, i.e., all lower case, no dashes or special characters.) 
@@ -69,7 +76,7 @@ Adapt column names for better readability, that is, all lower case letterm remov
 | tBodyAcc-mean()-Z                    | tbodyaccelerationmeanz                    |
 | tGravityAcc-mean()-X                 | tgravityaccelerationmeanx                 |
 | tGravityAcc-mean()-Y                 | tgravityaccelerationmeany                 |
-| 6"tGravityAcc-mean()-Z               | tgravityaccelerationmeanz                 |
+| tGravityAcc-mean()-Z                 | tgravityaccelerationmeanz                 |
 | tBodyAccJerk-mean()-X                | tbodyaccelerationjerkmeanx                |
 | tBodyAccJerk-mean()-Y                | tbodyaccelerationjerkmeany                |
 | tBodyAccJerk-mean()-Z                | tbodyaccelerationjerkmeanz                |
@@ -152,6 +159,7 @@ Adapt column names for better readability, that is, all lower case letterm remov
 | fBodyBodyGyroJerkMag-std()           | fbodygyrojerkmagnitudestd                 |
 
 ## STEP 8
+
 As the reshape2 package is required for the final step, the scripts checks first whether reshape 2 is installed. If it is not installed, it will install the reshape2 package. The script will load the reshape2 package. 
 
 Calculate mean per subject (i.e., 1 thorugh 30), per activity (i.e., walking, walking upstairs, walking downstairs, sitting, standing, laying) for each variable and save into a data frame called dsfinal. Assign column names to dsfinal.
@@ -163,5 +171,6 @@ This step also assigns current date to a new character vector called dataanalyze
 (Note: Prior to the melting and mean calcucations steps, the data frame are attached and detached for easier calling of variables.)
 
 ## Step 9
+
 Save dsfinal as a text file into the current working directory.
 Print the following messages on-screen: (1) A tidy data set called tidyds.txt was saved into your current working directory. Please see README.md for specifics on the code used and CodeBook.md for details on the variables in this data set. (2) The data for this analysis was downloaded on <datedownloaded>. The analysis was conducteded on <dateanalyzed>.
