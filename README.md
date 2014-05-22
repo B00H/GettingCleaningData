@@ -2,7 +2,7 @@
 
 * STEP 1
 
-Check whether the file to be processed (i.e., getdata-projectfiles-UCI HAR Dataset.zip) exists in your current working directory.  If it does not exist, the script will download the data set from the [web](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) to your current working directory. It will also  save the download date as a new character vector called downloaddate.
+Check whether the file to be processed (i.e., getdata-projectfiles-UCI HAR Dataset.zip) exists in your current working directory.  If it does not exist, the script will download the data set from the [web](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) to your current working directory. It will also save the download date as a new character vector called datedownloaded.
 
 Check whether unzipped folder called UCI HAR Dataset exists. If it does not exist, script will unzip the getdata-projectfiles-UCI HAR Dataset.zip file into your current working directory.
 
@@ -10,43 +10,47 @@ Check whether unzipped folder called UCI HAR Dataset exists. If it does not exis
 
 Read a total of 7 files from the UCI HAR Dataset folder into your workspace:
 
-From the train folder within the UCI HAR Dataset folder:
+From the train folder within the UCI HAR Dataset folder, it reads:
 
-| Original file     | File description | R variable | R class   |
+| File to be read     | File description | R variable | R class   |
 |-------------------|------------------|------------|-----------|
 | X_train.txt       | raw train data   | trainraw   | numeric   |
 | y_train.txt       | train activities | trainact   | character |
 | subject_train.txt | train subjects   | trainsub   | numeric   |
 
-From the test folder with the UCI HAR Dataset folder:
+From the test folder with the UCI HAR Dataset folder, it reads:
 
-| Original file    | File description | R variable | R class   |
+| File to be read    | File description | R variable | R class   |
 |------------------|------------------|------------|-----------|
 | X_test.txt       | raw test data    | testraw    | numeric   |
 | y_test.txt       | test activities  | testact    | character |
 | subject_test.txt | test subjects    | testsub    | numeric   |
 
-From the UCI HAR Dataset folder:
+From the UCI HAR Dataset folder, it reads:
 
-| Original file | File description | R variable | R class   |
+| File to be read | File description | R variable | R class   |
 |---------------|------------------|------------|-----------|
 | features.txt  | variable names   | var        | character |
 
 * STEP 3
 
-Merge the train and test raw data sets (i.e., trainraw, testraw) into one data frame (i.e., dsraw). This data frame  will have 10299 rows and 561 columns. This can be checked using: `dim(dsraw)`.
+Merge the train and test raw data sets (i.e., trainraw, testraw) into one data frame (i.e., dsraw). The data frame dsraw will have 10299 rows and 561 columns. This can be checked using: `dim(dsraw)`.
 
-Assign the merged data set dsraw column names that were previously stored as var. (Note: Specifically, the script calls the second column of var; the first column signifies the number of rows.)
+Assign the merged data set dsraw column names that were previously stored as var. 
+
+(Note: Specifically, the script calls the second column of var; the first column signifies the number of rows.)
  
 * STEP 4
 
-Subset the data in such that all columns that have mean, Mean or std in the name get copied to a new dataset called dsreduced. This is done in three steps. First, it will subset the data by mean or Mean, saving it as dsmean. Then, it will subset by std, saving it as dsstd. Finally, it will combine dsmean and dsstad into dsreduced. The data frame dsreduced will have 10299 rows and 86 columns. This can be checked using: `dim(dsreduced)`.
+Subset the data in such that all columns that have mean, Mean or std in the name get copied to a new dataset called dsreduced. This is done in three steps. First, the script subsets the data by mean or Mean, saving it as dsmean. Then, it subsets by std, saving it as dsstd. Finally, it combines dsmean and dsstad into dsreduced. The data frame dsreduced will have 10299 rows and 86 columns. This can be checked using: `dim(dsreduced)`.
+
+(Note: The Course Project assignment did not specify which analyses will be conducted with the tidy data set. I therefore chose a rather conservative subsetting approach and included all columns that have mean, Mean, or std in it. Arguably, not all columns extracted do represent means and std; however, given that no details on further analyses were provided, this conservative approach made sure that all possible variables of interest were included into the tidy dataset.) 
 
 * STEP 5
 
-Merge train and test activity labels (i.e., trainact, testact) into one data frame called allact. Assign 'activity' as column name of allact.
+Merge train and test activity labels (i.e., trainact, testact) into one data frame called allact. Assign column name to allact.
 
-For easier reading, the data frame allact will then be recoded by adding a new character variable called ractitvity to allact. The recoding scheme is as follows:
+For easier reading, the data frame allact is then recoded by adding a new character variable called ractitvity to allact. The recoding scheme is as follows:
 
 | Original activity entry | Recoded activity entry |
 |-------------------------|------------------------|
@@ -57,7 +61,9 @@ For easier reading, the data frame allact will then be recoded by adding a new c
 | 5                       | standing               |
 | 6                       | laying                 |
 
-The numeric activity column is deleted. (Note: For easier calling of variables, allact was attached prior to recoding and detached after it.)
+The numeric activity column is then deleted. 
+
+(Note: For easier calling of variables, allact is attached prior to and detached after recoding.)
 
 * STEP 6
 
@@ -67,7 +73,7 @@ Merge subject, activity and reduced data set data frames (i.e., allsub, allact, 
 
 * STEP 7
 
-Adapt column names for better readability, that is, all lower case letterm remove dashes, round brackets, duplicates (e.g., bodybody becomes body), and commas. Also, expand names (e.g., mag becomes magnitude, acc becomes acceleration). Please see table below for original and adapted column names. 
+Adapt column names for better readability, that is, all lower case letters, remove dashes, round brackets, duplicates (e.g., bodybody becomes body), and commas. Also, expand names (e.g., mag becomes magnitude, acc becomes acceleration). Please see table below for original and adapted column names. 
 
 (Note: Naming conventions followed Coursera Getting and Cleaning data guidelines, i.e., all lower case, no dashes or special characters.) 
 
@@ -162,7 +168,9 @@ Adapt column names for better readability, that is, all lower case letterm remov
 
 * STEP 8
 
-As the reshape2 package is required for this step, the scripts checks first whether reshape 2 is installed. If it is not installed, it will install the reshape2 package. The script will load the reshape2 package. 
+As the reshape2 package is required for this step, the scripts checks first whether reshape 2 is installed. If it is not installed, it will install the reshape2 package. 
+
+The script loads the reshape2 package. 
 
 Calculate mean per subject (i.e., 1 thorugh 30), per activity (i.e., walking, walking upstairs, walking downstairs, sitting, standing, laying) for each variable and save into a data frame called dsfinal. Assign column names to dsfinal.
 
@@ -170,9 +178,10 @@ This is done in three steps. First, using melt from the reshape2 package, the ds
 
 This step also assigns current date to a new character vector called dataanalyzed. 
   
-(Note: Prior to the melting and mean calcucations steps, the data frame are attached and detached for easier calling of variables.)
+(Note: Prior to the melting and mean calcucations steps, the data frames are attached for easier calling of variables. Once finished, the data frames are detached again.)
 
 * Step 9
 
 Save dsfinal as a text file into the current working directory.
-Print the following messages on-screen: (1) A tidy data set called tidyds.txt was saved into your current working directory. Please see README.md for specifics on the code used and CodeBook.md for details on the variables in this data set. (2) The data for this analysis was downloaded on <datedownloaded>. The analysis was conducteded on <dateanalyzed>.
+
+Print the following messages on-screen: (1) A tidy data set called tidyds.txt was saved into your current working directory. Please see README.md for specifics on the code used. Please see CodeBook.md for details on the variables in this data set. (2) The data for this analysis was downloaded on <datedownloaded>. The analysis was conducteded on <dateanalyzed>.
