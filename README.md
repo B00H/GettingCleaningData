@@ -1,5 +1,7 @@
 ## ANALYSIS STEPS
 
+Note: The run_analysis.R script requires the reshape2 package. Please install the reshape2 package before running run_analysis.R. If the reshape2 package is not installed, the script will stop  and displaying the print an error message regarding this and asking you to install the package. 
+
 * **STEP 1**
 
 Check whether the file to be processed (i.e., getdata-projectfiles-UCI HAR Dataset.zip) exists in your current working directory.  If it does not exist, the script will download the data set from the [web](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) to your current working directory. It will also save the download date as a new character vector called datedownloaded.
