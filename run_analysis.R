@@ -92,7 +92,7 @@ names(dsall) <- sub("gyro", "gyroscope", names(dsall))
 ## Check whether reshape2 package is installed. 
 ## Install, if neccessary.
 if (!"reshape2" %in% rownames(installed.packages())){
-	install.packages("reshape2")
+	stop("This script requires the reshape 2 package. Please install the reshape2 package.") 
 }
 
 ## Load reshape 2 package.
@@ -116,4 +116,4 @@ write.table(dsfinal, file = "tidyds.txt", col.names = T, sep = "")
 ## The end. Print message to user. :)
 print("A tidy data set called tidyds.txt was saved in your current working directory.")
 print(paste("The raw data set was downloaded on", datedownloaded, "."))
-print(paste("The raw data set was analyzed on", dateanalyzed, "."))
+print(paste("The raw data set was processed on", dateanalyzed, "."))
